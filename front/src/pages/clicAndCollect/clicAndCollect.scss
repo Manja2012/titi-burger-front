@@ -1,0 +1,41 @@
+.button-mobil__cta {
+  margin-top: 50px;
+}
+.cta__link {
+  margin: 0 auto;
+}
+.main-clicAndCollect {
+  text-align: center;
+  padding-top: 0;
+}
+.main-clicAndCollect_caption {
+  color: var(--accent-color);
+}
+.main-clicAndCollect_title {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.main-clicAndCollect_text {
+  width: 50%;
+  margin: 0 auto;
+}
+.cta__button {
+  width: 100%;
+  height: 89px;
+  margin: 0 auto;
+  border: transparent;
+  background-color: var(--accent-color);
+  color: var(--text-contacts-color);
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 33px;
+  font-weight: 400;
+  font-family: "Langar", cursive;
+    @media screen and (min-width:768px){
+      width: 40%;
+    }
+}
+.cta__background__clicAndCollect {
+  text-align: center;
+}

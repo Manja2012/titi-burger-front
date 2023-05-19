@@ -1,0 +1,88 @@
+
+.ourBurgers {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+    &__description {
+      width: 40%;
+    }
+    &__clicAndCollect {
+      width: 40%;
+      text-align: center;
+    }
+    &__clicAndCollect-text {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    &__clicAndCollect-title {
+    margin-bottom: 5px;
+  }
+}
+ 
+.burger {
+  padding-bottom: 50px;
+  padding-top: 50px;
+  border-bottom: 2px dashed var(--background-footer-color);
+    @media screen and (min-width: 768px) {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    &__capture{
+      text-align: center;
+      font-size: 32px;
+        @media screen and (min-width: 768px) {
+          font-size: 68px;
+    }
+    }
+    &__input {
+      zoom: 2;
+    } 
+    &__position {
+    
+      object-fit: cover;
+      object-position: center;
+        @media screen and (min-width: 768px) {
+          width: 25%;
+        }
+    }
+    &__img{
+      max-width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin: 15px;
+    } 
+    &__title {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: var(--text-color);
+      font-size: 38px;
+      line-height: 45px;
+      text-align: center;
+        @media screen and (min-width: 768px) {
+          width: 25%;
+          margin: 0;
+          }
+        }
+    &__text {
+      text-align: center;
+        @media screen and (min-width: 768px) {
+          width: 30%;
+    }
+  }
+}
+
+.cta__burgers {
+  background: none;
+  text-align: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
+    &__accompagnements {
+      margin-top: 60px;
+  }
+}
+

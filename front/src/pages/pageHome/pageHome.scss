@@ -1,0 +1,184 @@
+.titiStory {
+  margin: 0px auto;
+    @media screen and (min-width: 768px) {
+      width: 80%;
+      display: flex;
+      justify-content: space-between;
+    }
+}
+.titiStory_resto {
+  @media screen and (min-width: 768px) {
+    width: 50%;
+  }
+  &_title {
+    text-align: center;
+    margin: 0;
+      @media screen and (min-width: 768px) {
+        margin-bottom: 38px;
+      }
+  }
+}
+.titiStory_image {
+  border-radius: 15px;
+  margin: 10px;
+    @media screen and (min-width: 768px) {
+      width: 70%;
+      margin: 0 auto;
+    }
+}
+.titiStory_story {
+  text-align: center;
+    @media screen and (min-width: 768px) {
+    width: 50%;
+    }
+    &_title {
+    text-align: center;
+      @media screen and (min-width: 768px) {
+        margin-bottom: 16px;
+    }
+    }
+    &_text {
+      width: 80%;
+      margin: 0 auto;
+        @media screen and (min-width: 768px) {
+        width: 70%;
+      }
+    }
+    &_description {
+      margin-bottom: 64px;
+   }
+}
+
+.myBurgers {
+  margin: 0 auto;
+    @media screen and (min-width: 1200px) {
+      display: flex;
+      justify-content: space-around;
+    }
+}
+
+.myBurgers_burgers {
+   @media screen and (min-width: 1200px) { 
+    width: 30%;
+  }
+}
+.myBurgers_burgers_title {
+  text-align: center;
+}
+.myBurgers_burgers_text {
+  width: 80%;
+  margin: 0 auto;
+    @media screen and (min-width: 768px) {
+      width: 70%;
+    }
+}
+.myBurgers_diapo {
+    @media screen and (min-width: 1200px) {
+    width: 70%;
+  }
+}
+.myBurgers_diapo img {
+  object-fit: cover;
+}
+.myBurgers_photos {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
+.myBurgers_photos_img {
+  height: 250px;
+  margin-right: 20px;
+}
+
+article {
+  padding: 15px;
+    @media screen and (min-width: 768px) {
+      width: 380px;
+    }
+}
+.actus {
+  text-align: center;
+}
+.actus__no-padding-top {
+  padding-top: 0;
+}
+
+.actus_articles {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.actus_articles__title {
+  margin-bottom: 24px;
+}
+.actus_articles_img {
+  max-width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin: 15px;
+}
+
+.actus_articles_img {
+  @media screen and (min-width: 768px) {
+    width: 380px;
+    height: 350px;
+  }
+}
+.actus_articles_link {
+  margin-top: 12px;
+  text-decoration: none;
+  background-color: var(--link-color);
+  margin-left: 16px;
+  color: var(--text-contacts-color);
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: bold;
+  font-family: "Langar", cursive;
+  padding: 4px;
+}
+.actus_articles_text {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.cta {
+  background: var(--bg-button-color);
+  padding: 40px;
+}
+.cta_background {
+  background-color: var(--background-footer-color);
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+}
+.cta_title {
+  width: 50%;
+  text-align: center;
+}
+.cta_title_text {
+  color: var(--text-contacts-color);
+  margin: 0;
+}
+.cta_form {
+  text-align: center;
+  width: 50%;
+}
+.cta_form_label {
+  margin-right: 56px;
+  color: var(--text-contacts-color);
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  font-family: "Langar", cursive;
+}
+.cta_form_input {
+  width: 60%;
+  height: 30px;
+  margin-top: 12px;
+}
+

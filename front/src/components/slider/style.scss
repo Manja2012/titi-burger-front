@@ -1,0 +1,23 @@
+.slick-slider img:not(.slick-arrow) {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin: 15px;
+  }
+
+.slick-next:before, .slick-prev:before {
+  color: black;
+}
+
+.slick-dots {
+  display: none;
+}
+
+.slick-prev {
+  left: 0 !important;
+}
+
+.slick-next {
+  right: 0 !important;
+}

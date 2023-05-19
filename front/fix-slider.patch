@@ -1,0 +1,545 @@
+From 463e89ba8789197b77195a47bcc80b28065ad941 Mon Sep 17 00:00:00 2001
+From: Marianna <mdemko2012@gmail.com>
+Date: Sat, 18 Mar 2023 10:47:49 +0100
+Subject: [PATCH] Add styles for Slider
+
+---
+ package-lock.json                          | 190 ++++++++++-----------
+ package.json                               |   3 +
+ src/components/slider/ajax-loader.gif      | Bin 0 -> 4178 bytes
+ src/components/slider/fonts/slick.eot      | Bin 0 -> 2048 bytes
+ src/components/slider/fonts/slick.svg      |  14 ++
+ src/components/slider/fonts/slick.ttf      | Bin 0 -> 1892 bytes
+ src/components/slider/fonts/slick.woff     | Bin 0 -> 1380 bytes
+ src/components/slider/slider-theme.min.css |   2 +
+ src/components/slider/slider.js            |   4 +
+ src/components/slider/slider.min.css       |   1 +
+ 10 files changed, 112 insertions(+), 102 deletions(-)
+ create mode 100644 src/components/slider/ajax-loader.gif
+ create mode 100644 src/components/slider/fonts/slick.eot
+ create mode 100644 src/components/slider/fonts/slick.svg
+ create mode 100644 src/components/slider/fonts/slick.ttf
+ create mode 100644 src/components/slider/fonts/slick.woff
+ create mode 100644 src/components/slider/slider-theme.min.css
+ create mode 100644 src/components/slider/slider.min.css
+
+diff --git a/package-lock.json b/package-lock.json
+index 89acae4..994102d 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -11,10 +11,13 @@
+         "@testing-library/jest-dom": "^5.16.5",
+         "@testing-library/react": "^13.4.0",
+         "@testing-library/user-event": "^13.5.0",
++        "axios": "^1.3.4",
+         "react": "^18.2.0",
+         "react-dom": "^18.2.0",
++        "react-paypal-button-v2": "^2.6.3",
+         "react-router-dom": "^6.8.2",
+         "react-scripts": "5.0.1",
++        "react-slick": "^0.29.0",
+         "web-vitals": "^2.1.4"
+       }
+     },
+@@ -3418,95 +3421,6 @@
+         "url": "https://github.com/sponsors/gregberge"
+       }
+     },
+-    "node_modules/@testing-library/dom": {
+-      "version": "9.0.0",
+-      "resolved": "https://registry.npmjs.org/@testing-library/dom/-/dom-9.0.0.tgz",
+-      "integrity": "sha512-+/TLgKNFsYUshOY/zXsQOk+PlFQK+eyJ9T13IDVNJEi+M+Un7xlJK+FZKkbGSnf0+7E1G6PlDhkSYQ/GFiruBQ==",
+-      "peer": true,
+-      "dependencies": {
+-        "@babel/code-frame": "^7.10.4",
+-        "@babel/runtime": "^7.12.5",
+-        "@types/aria-query": "^5.0.1",
+-        "aria-query": "^5.0.0",
+-        "chalk": "^4.1.0",
+-        "dom-accessibility-api": "^0.5.9",
+-        "lz-string": "^1.4.4",
+-        "pretty-format": "^27.0.2"
+-      },
+-      "engines": {
+-        "node": ">=14"
+-      }
+-    },
+-    "node_modules/@testing-library/dom/node_modules/ansi-styles": {
+-      "version": "4.3.0",
+-      "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-4.3.0.tgz",
+-      "integrity": "sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==",
+-      "peer": true,
+-      "dependencies": {
+-        "color-convert": "^2.0.1"
+-      },
+-      "engines": {
+-        "node": ">=8"
+-      },
+-      "funding": {
+-        "url": "https://github.com/chalk/ansi-styles?sponsor=1"
+-      }
+-    },
+-    "node_modules/@testing-library/dom/node_modules/chalk": {
+-      "version": "4.1.2",
+-      "resolved": "https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz",
+-      "integrity": "sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==",
+-      "peer": true,
+-      "dependencies": {
+-        "ansi-styles": "^4.1.0",
+-        "supports-color": "^7.1.0"
+-      },
+-      "engines": {
+-        "node": ">=10"
+-      },
+-      "funding": {
+-        "url": "https://github.com/chalk/chalk?sponsor=1"
+-      }
+-    },
+-    "node_modules/@testing-library/dom/node_modules/color-convert": {
+-      "version": "2.0.1",
+-      "resolved": "https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz",
+-      "integrity": "sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==",
+-      "peer": true,
+-      "dependencies": {
+-        "color-name": "~1.1.4"
+-      },
+-      "engines": {
+-        "node": ">=7.0.0"
+-      }
+-    },
+-    "node_modules/@testing-library/dom/node_modules/color-name": {
+-      "version": "1.1.4",
+-      "resolved": "https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz",
+-      "integrity": "sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==",
+-      "peer": true
+-    },
+-    "node_modules/@testing-library/dom/node_modules/has-flag": {
+-      "version": "4.0.0",
+-      "resolved": "https://registry.npmjs.org/has-flag/-/has-flag-4.0.0.tgz",
+-      "integrity": "sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==",
+-      "peer": true,
+-      "engines": {
+-        "node": ">=8"
+-      }
+-    },
+-    "node_modules/@testing-library/dom/node_modules/supports-color": {
+-      "version": "7.2.0",
+-      "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-7.2.0.tgz",
+-      "integrity": "sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==",
+-      "peer": true,
+-      "dependencies": {
+-        "has-flag": "^4.0.0"
+-      },
+-      "engines": {
+-        "node": ">=8"
+-      }
+-    },
+     "node_modules/@testing-library/jest-dom": {
+       "version": "5.16.5",
+       "resolved": "https://registry.npmjs.org/@testing-library/jest-dom/-/jest-dom-5.16.5.tgz",
+@@ -5065,6 +4979,29 @@
+         "node": ">=4"
+       }
+     },
++    "node_modules/axios": {
++      "version": "1.3.4",
++      "resolved": "https://registry.npmjs.org/axios/-/axios-1.3.4.tgz",
++      "integrity": "sha512-toYm+Bsyl6VC5wSkfkbbNB6ROv7KY93PEBBL6xyDczaIHasAiv4wPqQ/c4RjoQzipxRD2W5g21cOqQulZ7rHwQ==",
++      "dependencies": {
++        "follow-redirects": "^1.15.0",
++        "form-data": "^4.0.0",
++        "proxy-from-env": "^1.1.0"
++      }
++    },
++    "node_modules/axios/node_modules/form-data": {
++      "version": "4.0.0",
++      "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.0.tgz",
++      "integrity": "sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==",
++      "dependencies": {
++        "asynckit": "^0.4.0",
++        "combined-stream": "^1.0.8",
++        "mime-types": "^2.1.12"
++      },
++      "engines": {
++        "node": ">= 6"
++      }
++    },
+     "node_modules/axobject-query": {
+       "version": "3.1.1",
+       "resolved": "https://registry.npmjs.org/axobject-query/-/axobject-query-3.1.1.tgz",
+@@ -5725,6 +5662,11 @@
+       "resolved": "https://registry.npmjs.org/cjs-module-lexer/-/cjs-module-lexer-1.2.2.tgz",
+       "integrity": "sha512-cOU9usZw8/dXIXKtwa8pM0OTJQuJkxMN6w30csNRUerHfeQ5R6U3kkU/FtJeIf3M202OHfY2U8ccInBG7/xogA=="
+     },
++    "node_modules/classnames": {
++      "version": "2.3.2",
++      "resolved": "https://registry.npmjs.org/classnames/-/classnames-2.3.2.tgz",
++      "integrity": "sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw=="
++    },
+     "node_modules/clean-css": {
+       "version": "5.3.2",
+       "resolved": "https://registry.npmjs.org/clean-css/-/clean-css-5.3.2.tgz",
+@@ -6847,6 +6789,11 @@
+         "node": ">=10.13.0"
+       }
+     },
++    "node_modules/enquire.js": {
++      "version": "2.1.6",
++      "resolved": "https://registry.npmjs.org/enquire.js/-/enquire.js-2.1.6.tgz",
++      "integrity": "sha512-/KujNpO+PT63F7Hlpu4h3pE3TokKRHN26JYmQpPyjkRD/N57R7bPDNojMXdi7uveAKjYB7yQnartCxZnFWr0Xw=="
++    },
+     "node_modules/entities": {
+       "version": "2.2.0",
+       "resolved": "https://registry.npmjs.org/entities/-/entities-2.2.0.tgz",
+@@ -11639,6 +11586,14 @@
+       "resolved": "https://registry.npmjs.org/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz",
+       "integrity": "sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw=="
+     },
++    "node_modules/json2mq": {
++      "version": "0.2.0",
++      "resolved": "https://registry.npmjs.org/json2mq/-/json2mq-0.2.0.tgz",
++      "integrity": "sha512-SzoRg7ux5DWTII9J2qkrZrqV1gt+rTaoufMxEzXbS26Uid0NwaJd123HcoB80TgubEppxxIGdNxCx50fEoEWQA==",
++      "dependencies": {
++        "string-convert": "^0.2.0"
++      }
++    },
+     "node_modules/json5": {
+       "version": "2.2.3",
+       "resolved": "https://registry.npmjs.org/json5/-/json5-2.2.3.tgz",
+@@ -14038,6 +13993,11 @@
+         "node": ">= 0.10"
+       }
+     },
++    "node_modules/proxy-from-env": {
++      "version": "1.1.0",
++      "resolved": "https://registry.npmjs.org/proxy-from-env/-/proxy-from-env-1.1.0.tgz",
++      "integrity": "sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg=="
++    },
+     "node_modules/psl": {
+       "version": "1.9.0",
+       "resolved": "https://registry.npmjs.org/psl/-/psl-1.9.0.tgz",
+@@ -14332,6 +14292,19 @@
+       "resolved": "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz",
+       "integrity": "sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w=="
+     },
++    "node_modules/react-paypal-button-v2": {
++      "version": "2.6.3",
++      "resolved": "https://registry.npmjs.org/react-paypal-button-v2/-/react-paypal-button-v2-2.6.3.tgz",
++      "integrity": "sha512-Kt0QxWjZn+RnIbbFPHDfH8iHwMqe/jG5+SkKElEJ0Fg+CM9yeK37y8zQW97l5C9P9D1yPacW5YNAnuxmI9uS9w==",
++      "dependencies": {
++        "prop-types": "^15.7.2",
++        "rimraf": "^3.0.0"
++      },
++      "peerDependencies": {
++        "react": "^0.14.6 || 15.x.x || 16.x.x || 17.x.x",
++        "react-dom": "^0.14.6 || 15.x.x || 16.x.x || 17.x.x"
++      }
++    },
+     "node_modules/react-refresh": {
+       "version": "0.11.0",
+       "resolved": "https://registry.npmjs.org/react-refresh/-/react-refresh-0.11.0.tgz",
+@@ -14442,6 +14415,22 @@
+         }
+       }
+     },
++    "node_modules/react-slick": {
++      "version": "0.29.0",
++      "resolved": "https://registry.npmjs.org/react-slick/-/react-slick-0.29.0.tgz",
++      "integrity": "sha512-TGdOKE+ZkJHHeC4aaoH85m8RnFyWqdqRfAGkhd6dirmATXMZWAxOpTLmw2Ll/jPTQ3eEG7ercFr/sbzdeYCJXA==",
++      "dependencies": {
++        "classnames": "^2.2.5",
++        "enquire.js": "^2.1.6",
++        "json2mq": "^0.2.0",
++        "lodash.debounce": "^4.0.8",
++        "resize-observer-polyfill": "^1.5.0"
++      },
++      "peerDependencies": {
++        "react": "^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0",
++        "react-dom": "^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0"
++      }
++    },
+     "node_modules/read-cache": {
+       "version": "1.0.0",
+       "resolved": "https://registry.npmjs.org/read-cache/-/read-cache-1.0.0.tgz",
+@@ -14634,6 +14623,11 @@
+       "resolved": "https://registry.npmjs.org/requires-port/-/requires-port-1.0.0.tgz",
+       "integrity": "sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ=="
+     },
++    "node_modules/resize-observer-polyfill": {
++      "version": "1.5.1",
++      "resolved": "https://registry.npmjs.org/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz",
++      "integrity": "sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg=="
++    },
+     "node_modules/resolve": {
+       "version": "1.22.1",
+       "resolved": "https://registry.npmjs.org/resolve/-/resolve-1.22.1.tgz",
+@@ -15381,6 +15375,11 @@
+         "safe-buffer": "~5.2.0"
+       }
+     },
++    "node_modules/string-convert": {
++      "version": "0.2.1",
++      "resolved": "https://registry.npmjs.org/string-convert/-/string-convert-0.2.1.tgz",
++      "integrity": "sha512-u/1tdPl4yQnPBjnVrmdLo9gtuLvELKsAoRapekWggdiQNvvvum+jYF329d84NAa660KQw7pB2n36KrIKVoXa3A=="
++    },
+     "node_modules/string-length": {
+       "version": "4.0.2",
+       "resolved": "https://registry.npmjs.org/string-length/-/string-length-4.0.2.tgz",
+@@ -16077,19 +16076,6 @@
+         "is-typedarray": "^1.0.0"
+       }
+     },
+-    "node_modules/typescript": {
+-      "version": "4.9.5",
+-      "resolved": "https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz",
+-      "integrity": "sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==",
+-      "peer": true,
+-      "bin": {
+-        "tsc": "bin/tsc",
+-        "tsserver": "bin/tsserver"
+-      },
+-      "engines": {
+-        "node": ">=4.2.0"
+-      }
+-    },
+     "node_modules/unbox-primitive": {
+       "version": "1.0.2",
+       "resolved": "https://registry.npmjs.org/unbox-primitive/-/unbox-primitive-1.0.2.tgz",
+diff --git a/package.json b/package.json
+index 8d4fae1..1f875b6 100644
+--- a/package.json
++++ b/package.json
+@@ -6,10 +6,13 @@
+     "@testing-library/jest-dom": "^5.16.5",
+     "@testing-library/react": "^13.4.0",
+     "@testing-library/user-event": "^13.5.0",
++    "axios": "^1.3.4",
+     "react": "^18.2.0",
+     "react-dom": "^18.2.0",
++    "react-paypal-button-v2": "^2.6.3",
+     "react-router-dom": "^6.8.2",
+     "react-scripts": "5.0.1",
++    "react-slick": "^0.29.0",
+     "web-vitals": "^2.1.4"
+   },
+   "scripts": {
+diff --git a/src/components/slider/ajax-loader.gif b/src/components/slider/ajax-loader.gif
+new file mode 100644
+index 0000000000000000000000000000000000000000..e0e6e9760bc04861cc4771e327f22ed7962e0858
+GIT binary patch
+literal 4178
+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
+
+literal 0
+HcmV?d00001
+
+diff --git a/src/components/slider/fonts/slick.eot b/src/components/slider/fonts/slick.eot
+new file mode 100644
+index 0000000000000000000000000000000000000000..2cbab9ca97723bc24c50315a0a9bd155db4e0aa5
+GIT binary patch
+literal 2048
+zcmcgtO>7%Q6n^9V^B-}NZk*EEVeMi&O%prb7zafaL6A786eTJs%>e;R;y4y|oY<}i
+z5)vjt;=&>7feV}}ai#*PAS5oRLOp@#1tg<V32}vTXfFtvZ)V4hle7nf#Mra*-uK>{
+z_p`I}$V;?l5Ha!)A0E<tf&j9|ICXvrOUrUW@f0wq#s2GedSFTVsX-Mg(<;3Iq>nC8
+zkxFz4m_v0SVOj=KhgO+tv`H3aDNU1*9JB<$9X&!VQfR4Ac<F`e4>vv~GM)n(S(uwI
+zP>yu)qu{N@7c=(ay}v($(F*wG)vB`<56yoK{s!jjC8x2~>0l=^EXcj3%3JHRA6<Km
+zNI8qF$2W@38nNtOko}CA-vFTe=Fwnlf`5FY+T794(K+x}!G|lgRfq1eE3h92-(Pih
+zw&;0Ufc#1D)}~V}YN>a>A<{O0ZEn>X&CKUE{OdnKJ}+`Zes`|-FTNT&dzS)k{lDMd
+zc?WV5Yl0H2&DvnS^7UXV{5g_#^+EG0^$t}a2F=}nrQC{ZJuTIkhu9uz<YnjCI<N(~
+z-la$Bz1}m>68^}NcC@rUzlL3$*kyLRbDPqv-Qlsw2;7Lcy_kqz{J1gl7BeDsUk1mm
+zBBY9_f+9l|h-1ZLd$G%SSA6tvolk!G^;YxNcGsJb<H2wSWB`Q3T=!ieU%SFy?BCMx
+z@t+6I(*H0D^Z{LEVZ4Oy={Zg~p|dQX%dq6Bc!=pk=3~qd&+wF;Hx1p;<EdmSnVZf}
+z=k4L}@SnT7zN;BtEvoAmFY0<!^BR9dN9@VBC+(4Fm)PFb`=F+cXogQ+Sy6ok$eRaL
+zxGr)&6iZ?{{{(_@pKeHq=pnJN(VieQ8Q7QI81{oX5C!yjXb%d8-LK0rMD~E>S^LQ5
+z?5U$!?eFs}j@Xc?pJ6ECEH5!HsG*xEBz{viuj-VI1c!vTQ=-<g+FSyy>HKh*wf){!
+zK-YYuV>8i6WY7!-0zq>y5{bq~tYbP;m6YO%ojIM$B*#yjGzSLElPAWLnX%OAXu=x|
+zurFF(e<0vXrCh5ScZ*P8M1i5=QB$Vrn!MuLhXx`EuPP6AkUo^(3B$b*l(dHoic4Cd
+z7%pq~TT-F(v7|K$&{vYyf#2j`w(0}oM}1w|gElZIX@#DlF-fb?*^{(}#&AW_I`D6M
+z+eo8QUPU)K)JiTCOP4ARdP+ewlBQVeXf{Q%$QDh-q8ZTp4aw!R=o}Mb+GsqSqe5-7
+zS*X=ZMaxc4S~HgLh&7v=$W7RjS*YyqLNcC*G_vJly-}`hTG=$Z+EJ^+H`LMl3H=!L
+z^Dqxn=zW^=JN0_)&3d`C(ew$jQe1CBg=^uS#AObu5A!&O1h1eoGTg0QU&6<CzyHX4
+Jm)l$9`VTQ&{XGBx
+
+literal 0
+HcmV?d00001
+
+diff --git a/src/components/slider/fonts/slick.svg b/src/components/slider/fonts/slick.svg
+new file mode 100644
+index 0000000..5b16b28
+--- /dev/null
++++ b/src/components/slider/fonts/slick.svg
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="UTF-8" standalone="no"?>
++<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
++<svg xmlns="http://www.w3.org/2000/svg"><link xmlns="" type="text/css" rel="stylesheet" id="dark-mode-custom-link"/><link xmlns="" type="text/css" rel="stylesheet" id="dark-mode-general-link"/><style xmlns="" lang="en" type="text/css" id="dark-mode-custom-style"/><style xmlns="" lang="en" type="text/css" id="dark-mode-native-style"/><style xmlns="" lang="en" type="text/css" id="dark-mode-native-sheet"/>
++<metadata>Generated by Fontastic.me</metadata>
++<defs>
++<font id="slick" horiz-adv-x="512">
++<font-face font-family="slick" units-per-em="512" ascent="480" descent="-32"/>
++<missing-glyph horiz-adv-x="512"/>
++
++<glyph unicode="→" d="M241 113l130 130c4 4 6 8 6 13 0 5-2 9-6 13l-130 130c-3 3-7 5-12 5-5 0-10-2-13-5l-29-30c-4-3-6-7-6-12 0-5 2-10 6-13l87-88-87-88c-4-3-6-8-6-13 0-5 2-9 6-12l29-30c3-3 8-5 13-5 5 0 9 2 12 5z m234 143c0-40-9-77-29-110-20-34-46-60-80-80-33-20-70-29-110-29-40 0-77 9-110 29-34 20-60 46-80 80-20 33-29 70-29 110 0 40 9 77 29 110 20 34 46 60 80 80 33 20 70 29 110 29 40 0 77-9 110-29 34-20 60-46 80-80 20-33 29-70 29-110z"/>
++<glyph unicode="←" d="M296 113l29 30c4 3 6 7 6 12 0 5-2 10-6 13l-87 88 87 88c4 3 6 8 6 13 0 5-2 9-6 12l-29 30c-3 3-8 5-13 5-5 0-9-2-12-5l-130-130c-4-4-6-8-6-13 0-5 2-9 6-13l130-130c3-3 7-5 12-5 5 0 10 2 13 5z m179 143c0-40-9-77-29-110-20-34-46-60-80-80-33-20-70-29-110-29-40 0-77 9-110 29-34 20-60 46-80 80-20 33-29 70-29 110 0 40 9 77 29 110 20 34 46 60 80 80 33 20 70 29 110 29 40 0 77-9 110-29 34-20 60-46 80-80 20-33 29-70 29-110z"/>
++<glyph unicode="•" d="M475 256c0-40-9-77-29-110-20-34-46-60-80-80-33-20-70-29-110-29-40 0-77 9-110 29-34 20-60 46-80 80-20 33-29 70-29 110 0 40 9 77 29 110 20 34 46 60 80 80 33 20 70 29 110 29 40 0 77-9 110-29 34-20 60-46 80-80 20-33 29-70 29-110z"/>
++<glyph unicode="a" d="M475 439l0-128c0-5-1-9-5-13-4-4-8-5-13-5l-128 0c-8 0-13 3-17 11-3 7-2 14 4 20l40 39c-28 26-62 39-100 39-20 0-39-4-57-11-18-8-33-18-46-32-14-13-24-28-32-46-7-18-11-37-11-57 0-20 4-39 11-57 8-18 18-33 32-46 13-14 28-24 46-32 18-7 37-11 57-11 23 0 44 5 64 15 20 9 38 23 51 42 2 1 4 3 7 3 3 0 5-1 7-3l39-39c2-2 3-3 3-6 0-2-1-4-2-6-21-25-46-45-76-59-29-14-60-20-93-20-30 0-58 5-85 17-27 12-51 27-70 47-20 19-35 43-47 70-12 27-17 55-17 85 0 30 5 58 17 85 12 27 27 51 47 70 19 20 43 35 70 47 27 12 55 17 85 17 28 0 55-5 81-15 26-11 50-26 70-45l37 37c6 6 12 7 20 4 8-4 11-9 11-17z"/>
++</font></defs></svg>
+\ No newline at end of file
+diff --git a/src/components/slider/fonts/slick.ttf b/src/components/slider/fonts/slick.ttf
+new file mode 100644
+index 0000000000000000000000000000000000000000..9d03461b653373f7cda3b4af104c6bca07f9892b
+GIT binary patch
+literal 1892
+zcmcgtO>7%Q7=7dYvttuC>BcFo9o8<6(=@T2jd4&^kqQzA6;LWbX$}ZjQpdJ%;>2-9
+zkdO!w5*H3p4_x3>i8B>Q1tD=k2=xS_7m$ofCB&7VLwiBUyq#S)NmC98iCxXk_rBjZ
+z-_FiL0C)h~P;kCfdj6T!@2-CY7*A3gpP!v8p#YtDgxFemE@v;?`RijqED<j*uR80g
+z=-d~?*EwFPIGgL84l}{9Xb)EEudmF!f9+*JIRga7s%7UQ#KfPp{m4<QQlb13&=_kH
+zKU`gHZRzK5j`%8Ztln65a7SEW{21|(RcC7*Php<+M~SU9XSJ+l-ue>Is?@EmH#S?j
+zPi)rLf1rI1?%Fth|LVxXOVKm85e`rRe7mvr=G{4sv}lVqaS)za#z;-pQ&4s@?Y~s1
+zF)-`LxQ;^V&iZa50I>@VLGiR$p>E!vZ{tC{&2B&od7j&{9xM+5=U3(~;w+rxWpS%>
+z3t7?bxa@oeU5f6^LH6=?gSl=w;=b<-L~c|ZD)Rvmxk8naW2KV2$;*6K?zInfKK$wD
+zo2{E0-D=X#hu|LQwtx$hrMosccZ~;>{}Qmqf4;bv{)elCcX3t3_yW4S=NPy{XGF1(
+z6T>G{QK1i*4+%p)W0Q8#G;~8xWrj1ug{k6H(H@Kq{;{L$JDL&H61sljg03gDpz&K`
+z$j-l!w}%p4VPi+{rJFXS86kCPNevkkZya!OeYxg)xTL3wkC2S_^eB<hKX4Hv`$%X$
+zvCq03_Q)JyK|hz;{m6*BeK|^I_gTDXA4)DBJG`pBJWp`{4Ve0A!6weQEp{7f=q4M<
+zd(w8hI%#u(1G3sl*=xVsu7zGx#le_p_XM}Yx)vH4oleB#{bnQ_j+p)Ncp^1q9o2=Z
+zWRyVi^r=E_c<lHIv#-xQaeQnzH<~$>NCzWf@#%K3CmarCGG5fQmm=C5R~V=S)Qo9*
+zAuoFI(Y|;(sQMc_g7^H7Nbp>U_;LUSQogJpi8WtV>GOdvYY5|WU)HI=;eOd_h?*Yu
+z*OLS2MZYgAcpRg?tkP%Kmo>z2#g}#Jzs4r&s9_ne0-N>PGN)%zMg^CschDp(S1#2Z
+z3MDkittICsJ<70PBa1xeX^y>29-iQzV_XiKJ}yG3vDPXznw7F;XY<yyB`b2CD2x}z
+z?fe8?_Of*OEV5FQ`kJh7F_T*pi{<8Kt+8fJWC;#O-FreEKA#MBP9PuxLcu$j?QxpT
+y#%s-5rP>Nfv0h$j(Z%)RImyGEQZL6bS0%B+KcnE;+N~vPeDmw~?!W86Kjv>PckT%Q
+
+literal 0
+HcmV?d00001
+
+diff --git a/src/components/slider/fonts/slick.woff b/src/components/slider/fonts/slick.woff
+new file mode 100644
+index 0000000000000000000000000000000000000000..8ee99721bb81b59a5e1ceee1d3256b15f907d96b
+GIT binary patch
+literal 1380
+zcmZWoc~H_>9DiItQdGPuZL>_xgDjCHpv=4wk37&Nx3m(F$RqMd4ZI>#sTnIvS4$mr
+zYIRq0kV)NX%VjCA6!RLbG&S?cF0*sBT4Nv8fBW8i=FR8xz30vMSTKtf%;5wBfD-@$
+zfCs-1ptSG*j~9z&2>@yZ0O&0cW$QnM8L(KKKmafd=)DGFt!Us*gAdc21vQSALs$X|
+zzy|;1M1fiY<e?B;wwXpACE`JjX@i^%^YX0-OhxoTo&W%>Db!#MKm#b}&(TnX8WVDD
+zJ{!y|8WSx_7DJ5-xq%i~f8a0TiD5phwg&PQI5s%K6CH#a^aW$E#u1#|iQ5VBN0Z^a
+z+Wrh7ECB|f#O1CR`r?f}Ogj%bMA#Kog;~-(rbgn@>1o4d$4nYiRyuAWwB_b_E;YM}
+zZ@NV6aV$`k?$I^#Wy?FR9QXZfCw>r^*1y-k$0lC+Q7Ne`X`$=sB1Wy`n;#2J7g5fr
+zwyHxDSEMClZ`L6n$e70#EAWLIl3&MaoK(k+l#St%Y&(Sx=VqDv(*x+{1v@swNPOd5
+z_D&(udjRFH?3%?ol%y>x6(M%<A8*&(7kTBF<%WcyTz%>zP2C#?oZgpRVvQB6J2<-s
+z1XZ2vz<(2aNi{4LTCF&Bx<P(Up4mCd$l2bwEv}U6r+@hpDRr8jSZtp+Wli-Cd0m<H
+zGSPnO%a~$TKjO^@J(1o^66~_e=?{N?(RQTYv67}%FvqV6yxV<bKg*QX@z0tbnRHiY
+z1SiZte3))@QXae2xAkyy#O9uN_0(QsdmrB^PNx9n(Hqt{obji<UwcwTcYT0J&wLl7
+zui}tQ@*AUAS?qMRWVm*R442_jrvKz5VNQ*^r#}ubJ%7l}mzMBX%}eFkx}`PEo7x9!
+zIVG``GiYD7O?6Oh#H-!NQd8s)G}hho6a>GP@+$wvm5GG@1!A5n$t7wEd@)dWbK1t7
+zAI3J92@9!?&4dSMUJZ6VPu@Y5=2}-+<UZKTV6N7vG%P3H{zyMUj6+ap(CA~40b}w-
+zjKjv$R{GDj6W1cWPhx0WjY{6n*D3S1*1ybcOtv*yv+5t+d*X%lMKX&P0L0}{TrO7t
+zvX3sv<H5ijVbgOS6@*Lhjo)knE_V{c*Fg-qd@j~=6&ZPB2C%7su8kA&x#cQVx9Zl@
+z){7k~)uci7-xOa;6PZkQRwPlR9vBS9x*(J*&6ZN{n<Dr;X1iZL@rxU`KdNO}L&Grj
+zG1DT2KMr95y4nEl?6+QoQm#3|LJUu#-kROYScTv%@3yLLsjz|{$u=Z=hah(OdyU&3
+z3*!aN)Mw(t%5k-<6yWm@>pk@x!aH)vCoky=Cjr>DnYdb;5B3lEE)C=baaLJ_-dKR1
+zWr9+1d0o&|%I}m3VT=Au5?NY}TCUN7+x*?X<*rIq)!7En?lfx*iHingK58Bf7Yt(K
+z_X`<Zb(}Uvbk;St)!i`HZRCPimhXA152Mu{p2l_iYWh*3*XcqdE6?m-GS6{pLubvl
+zxf>Li%+9B6@V=(#S<IuqL#|Js!D@^twFIZ@d=p7msdEykFMTFIVyAV(ugckg!MKzo
+zw~OX*i#wPH-nP-8F>WT`XQx%ekcKa;n!7{j@jA|tbPOhjX{3cs;}XV-aNF@z-Qg~t
+z^N?v#oy+p0z}5Q)3S^P$>6P=;iqWo=dqdtaskSzCVSy7fDSNx#E>`??q5M<koyGJ_
+h+w>PtvepFdF46=ngEMs$@2`LCj^yh_!*S07+<yv>8;<}0
+
+literal 0
+HcmV?d00001
+
+diff --git a/src/components/slider/slider-theme.min.css b/src/components/slider/slider-theme.min.css
+new file mode 100644
+index 0000000..df9d001
+--- /dev/null
++++ b/src/components/slider/slider-theme.min.css
+@@ -0,0 +1,2 @@
++@charset 'UTF-8';.slick-dots,.slick-next,.slick-prev{position:absolute;display:block;padding:0}.slick-dots li button:before,.slick-next:before,.slick-prev:before{font-family:slick;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.slick-loading .slick-list{background:url(ajax-loader.gif) center center no-repeat #fff}@font-face{font-family:slick;font-weight:400;font-style:normal;src:url(fonts/slick.eot);src:url(fonts/slick.eot?#iefix) format('embedded-opentype'),url(fonts/slick.woff) format('woff'),url(fonts/slick.ttf) format('truetype'),url(fonts/slick.svg#slick) format('svg')}.slick-next,.slick-prev{font-size:0;line-height:0;top:50%;width:20px;height:20px;-webkit-transform:translate(0,-50%);-ms-transform:translate(0,-50%);transform:translate(0,-50%);cursor:pointer;color:transparent;border:none;outline:0;background:0 0}.slick-next:focus,.slick-next:hover,.slick-prev:focus,.slick-prev:hover{color:transparent;outline:0;background:0 0}.slick-next:focus:before,.slick-next:hover:before,.slick-prev:focus:before,.slick-prev:hover:before{opacity:1}.slick-next.slick-disabled:before,.slick-prev.slick-disabled:before{opacity:.25}.slick-next:before,.slick-prev:before{font-size:20px;line-height:1;opacity:.75;color:#fff}.slick-prev{left:-25px}[dir=rtl] .slick-prev{right:-25px;left:auto}.slick-prev:before{content:'←'}.slick-next:before,[dir=rtl] .slick-prev:before{content:'→'}.slick-next{right:-25px}[dir=rtl] .slick-next{right:auto;left:-25px}[dir=rtl] .slick-next:before{content:'←'}.slick-dotted.slick-slider{margin-bottom:30px}.slick-dots{bottom:-25px;width:100%;margin:0;list-style:none;text-align:center}.slick-dots li{position:relative;display:inline-block;width:20px;height:20px;margin:0 5px;padding:0;cursor:pointer}.slick-dots li button{font-size:0;line-height:0;display:block;width:20px;height:20px;padding:5px;cursor:pointer;color:transparent;border:0;outline:0;background:0 0}.slick-dots li button:focus,.slick-dots li button:hover{outline:0}.slick-dots li button:focus:before,.slick-dots li button:hover:before{opacity:1}.slick-dots li button:before{font-size:6px;line-height:20px;position:absolute;top:0;left:0;width:20px;height:20px;content:'•';text-align:center;opacity:.25;color:#000}.slick-dots li.slick-active button:before{opacity:.75;color:#000}
++
+diff --git a/src/components/slider/slider.js b/src/components/slider/slider.js
+index 86247f7..14813fb 100644
+--- a/src/components/slider/slider.js
++++ b/src/components/slider/slider.js
+@@ -1,5 +1,9 @@
++import "./slider.min.css"; 
++import "./slider-theme.min.css";
++
+ import React from "react";
+ import Slider from "react-slick";
++
+ import "./style.css"
+ 
+ function Slide (){
+diff --git a/src/components/slider/slider.min.css b/src/components/slider/slider.min.css
+new file mode 100644
+index 0000000..884b8f8
+--- /dev/null
++++ b/src/components/slider/slider.min.css
+@@ -0,0 +1 @@
++.slick-list,.slick-slider,.slick-track{position:relative;display:block}.slick-loading .slick-slide,.slick-loading .slick-track{visibility:hidden}.slick-slider{box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-touch-callout:none;-khtml-user-select:none;-ms-touch-action:pan-y;touch-action:pan-y;-webkit-tap-highlight-color:transparent}.slick-list{overflow:hidden;margin:0;padding:0}.slick-list:focus{outline:0}.slick-list.dragging{cursor:pointer;cursor:hand}.slick-slider .slick-list,.slick-slider .slick-track{-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);-o-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}.slick-track{top:0;left:0}.slick-track:after,.slick-track:before{display:table;content:''}.slick-track:after{clear:both}.slick-slide{display:none;float:left;height:100%;min-height:1px}[dir=rtl] .slick-slide{float:right}.slick-slide img{display:block}.slick-slide.slick-loading img{display:none}.slick-slide.dragging img{pointer-events:none}.slick-initialized .slick-slide{display:block}.slick-vertical .slick-slide{display:block;height:auto;border:1px solid transparent}.slick-arrow.slick-hidden{display:none}
+\ No newline at end of file
+-- 
+2.37.1
+
